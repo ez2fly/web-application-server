@@ -1,7 +1,9 @@
 package util;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class IOUtils {
 	/**
@@ -14,5 +16,9 @@ public class IOUtils {
 		char[] body = new char[contentLength];
 		br.read(body, 0, contentLength);
 		return String.copyValueOf(body);
+	}
+	
+	public static byte[] readFile(String url) throws IOException {
+		return Files.readAllBytes(new File(url).toPath());
 	}
 }
